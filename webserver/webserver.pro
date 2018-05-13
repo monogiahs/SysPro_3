@@ -4,5 +4,9 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    webserver.c
+    webserver.c \
+    command_line_utils.c
+
+HEADERS += \
+    command_line_utils.h
 
