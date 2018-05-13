@@ -1,0 +1,3 @@
+To run bash script type:
+
+	$ ./webcreator.sh  /home/linoukth/SysPro_3/root_directory text_file 3 3
