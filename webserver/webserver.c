@@ -10,6 +10,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+#include "command_line_utils.h"
+
 char webpage[] =
 "HTTP/1.1 200 OK\r\n"
 "Content-Type: text/html; charset=UTF-8\r\n\r\n"
@@ -17,15 +19,18 @@ char webpage[] =
 "<html><head><title>ShellWaveX</title>/r/n"
 "<style>body {background-color: #9FFF01}</style></head>\r\n"
 "<body><center><h1>Hello world!</h1><br>\r\n"
-"</body></html>\r\n";
+"</body></html>";
 
-int main(void)
+int main(int argc, char **argv)
 {
     struct sockaddr_in server_addr, client_addr;
     socklen_t sin_len = sizeof(client_addr);
     int fd_server, fd_client;
     char buf[2048];
     int on = 1;
+
+    if (parse_cli_args(argc, argv) == 1)
+            exit(EXIT_FAILURE);
 
     fd_server = socket(AF_INET, SOCK_STREAM, 0);
     if (fd_server < 0)
